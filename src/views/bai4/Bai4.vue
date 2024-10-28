@@ -3,7 +3,6 @@ import { ref, watch } from 'vue'
 
 const a = ref(0)
 const b = ref(0)
-
 const result = ref('Chưa có kết quả')
 
 watch([() => a.value, () => b.value], () => {
