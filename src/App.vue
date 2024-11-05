@@ -1,12 +1,11 @@
 <script setup>
 import { routes } from '@/router/index.js'
+import SignIn from '@/views/SignIn/index.vue'
 
 </script>
 
 <template>
-<!--    <RouterLink v-for="item in routes" :key="item.name" :to="item.path">{{item.title}}</RouterLink>-->
-<!--  <RouterView />-->
-  <div>lorem ipsum</div>
+  <RouterView />
 </template>
 
 <style scoped>
