@@ -12,9 +12,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "pinia": "^2.2.4",
     "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue3-smooth-dnd": "^0.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
