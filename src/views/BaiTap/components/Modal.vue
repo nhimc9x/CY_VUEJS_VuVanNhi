@@ -57,7 +57,7 @@ defineExpose({ editForm, handleResetForm })
         </div>
         <form @submit.prevent="emit('handleSubmitForm', title, description, levelValue, date)"
               class="px-4 mt-6 space-y-4">
-          <InputCustom placeholder="Title" :value="title" @modelValue="title = $event" />
+          <InputCustom placeholder="Title" v-model="title" />
           <TextAreaCustom placeholder="Description" :value="description" @modelValue="description = $event" />
           <div class="*:w-full #:bg-white rounded-md text-white">
             <SelectCustom :value="levelValue" :options="optionsLevel" @modelValue="levelValue = $event" />

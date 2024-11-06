@@ -78,6 +78,12 @@ export const routes = [
     name: 'Bai13',
     title: 'Bài 13',
     component: () => import('@/views/ListApp/DynamicComponent/index.vue')
+  },
+  {
+    path: '/bai14',
+    name: 'Bai14',
+    title: 'Bài 14',
+    component: () => import('@/views/ListApp/FiltersAndSortData/index.vue')
   }
 ]
 

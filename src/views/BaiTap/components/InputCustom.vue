@@ -1,27 +1,31 @@
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, ref, watch } from 'vue'
+
 const props = defineProps({
-  type: {
-    type: String,
-    default: 'text'
-  },
   placeholder: {
-    type: String,
+    type: String
   },
-  value: {
+  modelValue: {
     type: String,
     default: ''
   }
 })
+
+const ipValue = ref(props.modelValue)
+
+watch(() => props.modelValue, (newVal) => {
+  ipValue.value = newVal
+})
+
 </script>
 
 <template>
   <input
-    :type="type"
-    :value="value"
+    type="text"
     :placeholder="placeholder"
+    v-model="ipValue"
+    @input="$emit('update:modelValue', $event.target.value)"
     class="w-full p-2 border border-white rounded outline-none bg-transparent text-white"
-    @input="$emit('modelValue', $event.target.value.trim())"
   >
 </template>
 

@@ -33,5 +33,8 @@ watch(() => props.modelValue, (newVal) => {
 </template>
 
 <style scoped>
+.vc-weeks, .vc-day {
+  color: aqua !important;
+}
 
 </style>

@@ -1,4 +1,9 @@
 <script setup>
+import { useProductStore } from '@/views/ListApp/ShopCart/stores/products'
+import { defineProps } from 'vue'
+
+const store = useProductStore()
+const { addToCart } = store
 
 const props = defineProps({
   dataItem: {
@@ -6,6 +11,16 @@ const props = defineProps({
     required: true,
   },
 })
+
+const handleAddToCart = () => {
+  const data = {
+    id: props.dataItem.id,
+    name: props.dataItem.name,
+    price: props.dataItem.price,
+    image: props.dataItem.image,
+  }
+  addToCart(data)
+}
 
 </script>
 
@@ -40,6 +55,7 @@ const props = defineProps({
       </div>
       <div class="w-full flex-1 flex items-end justify-center">
         <button
+          @click="handleAddToCart"
           class="uppercase font-medium px-4 py-1.5 text-sm scale-75 origin-bottom rounded-full"
           :style="{backgroundColor: dataItem.color}"
         >Add to cart</button>
