@@ -5,8 +5,8 @@ import App from './App.vue'
 import router from './router'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { RiEditBoxFill, MdDelete, FaSave, MdCancelRound, RiSearchLine } from "oh-vue-icons/icons"
-addIcons(RiEditBoxFill, MdDelete, FaSave, MdCancelRound, RiSearchLine)
+import { RiEditBoxFill, MdDelete, FaSave, MdCancelRound, RiSearchLine, HiSolidShoppingCart, AiAcclaim } from "oh-vue-icons/icons"
+addIcons(RiEditBoxFill, MdDelete, FaSave, MdCancelRound, RiSearchLine, HiSolidShoppingCart, AiAcclaim )
 
 import { setupCalendar } from 'v-calendar';
 

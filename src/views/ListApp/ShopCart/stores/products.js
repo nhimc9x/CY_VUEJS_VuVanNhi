@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export const useProductStore = defineStore('product', () => {
-  // State
   const products = ref([
     {
       id: 1,
@@ -42,11 +41,23 @@ export const useProductStore = defineStore('product', () => {
     }
   ])
 
-  //   Getters
+  const cart = ref([])
 
-  //   Actions
+  const totalPrice = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0))
+
+  const addToCart = (item) => {
+    const isExist = cart.value.find(itemC => itemC.id === item.id)
+    if (isExist) {
+      alert('Item already exist in cart')
+      return
+    }
+    cart.value.push(item)
+  }
 
   return {
-    products
+    products,
+    cart,
+    addToCart,
+    totalPrice
   }
 })

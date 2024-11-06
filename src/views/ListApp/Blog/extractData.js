@@ -24,5 +24,5 @@ export const blogData = reactive([
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel qui et ad voluptatem. Velit ipsam voluptatem, velit ipsam voluptatem, velit ipsam voluptatem, velit ipsam voluptatem, velit ipsam voluptatem.',
     image: 'https://cf-wnhi.web.app/img/story3.jpg',
     date: 'October 7, 2023'
-  },
+  }
 ])
