@@ -1,12 +1,11 @@
 <script setup>
 import { routes } from '@/router/index.js'
+import TestDirectives from '@/views/TestDirectives/index.vue'
 
 </script>
 
 <template>
-<!--    <RouterLink v-for="item in routes" :key="item.name" :to="item.path">{{item.title}}</RouterLink>-->
-<!--  <RouterView />-->
-  <div>lorem ipsum</div>
+ <TestDirectives />
 </template>
 
 <style scoped>

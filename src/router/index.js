@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 export const routes = [
-
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/TestDirectives/index.vue'),
+  },
 ]
 
 const router = createRouter({
