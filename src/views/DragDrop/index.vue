@@ -1,6 +1,5 @@
 <script setup>
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import Header from '@/views/DragDrop/components/Header.vue'
 import SideBar from '@/views/DragDrop/components/SideBar.vue'
 
@@ -48,58 +47,6 @@ const categories = ref([
   }
 ])
 
-const onColumnDrop = (dropResult) => {
-  categories.value = applyDrag(categories.value, dropResult)
-}
-
-const onCardDrop = (id, dropResult) => {
-  if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-    const column = categories.value.find(category => category.id === id)
-    column.products = applyDrag(column.products, dropResult)
-  }
-}
-
-const getCardPayload = (categoryId) => {
-  console.log(categoryId)
-  return index => {
-    return categories.value.filter(category => category.id === categoryId)[0].products[index]
-  }
-}
-
-const applyDrag = (arr, dragResult) => {
-  const { removedIndex, addedIndex, payload } = dragResult
-  if (removedIndex === null && addedIndex === null) return arr
-  const result = [...arr]
-  let itemToAdd = payload
-  if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0]
-  }
-  if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd)
-  }
-  return result
-}
-
-const cardDragDropAnimation = reactive({
-  dropPlaceholder: {
-    className: 'bg-primary/20 border-2 mr-2 border-highlight border-dashed rounded-lg',
-    animationDuration: '200',
-    showOnTop: true
-  },
-  dragClass: 'cursor-grabbing transition border-2 border-white duration-100 ease-in z-50 transform rotate-6 scale-110',
-  dropClass: 'transition duration-200 ease-in z-50 transform -rotate-2 scale-90'
-})
-
-const columnsDragDropAnimation = reactive({
-  dropPlaceholder: {
-    className: 'bg-primary/20 border-2 mb-6 border-highlight border-dashed rounded-lg',
-    animationDuration: '200',
-    showOnTop: true
-  },
-  dragClass: 'cursor-grabbing border-2 border-white duration-100 ease-in z-50 scale-105',
-  dropClass: 'transition duration-200 ease-in z-50 transform -rotate-2 scale-90'
-})
-
 </script>
 
 <template>
@@ -113,64 +60,40 @@ const columnsDragDropAnimation = reactive({
         <SideBar />
         <div class="w-[78%] bg-red-500 flex py-3 px-6">
 
-          <Container
+          <div
             id="board"
-            :style="{ display: 'flex' }"
             class="py-3 flex gap-6 overflow-x-auto overflow-y-hidden"
-            orientation="horizontal"
-            @drop="onColumnDrop"
-            behaviour="contain"
-            :animation-duration="300"
-            drag-handle-selector="#column-drag-handle"
-            :drop-placeholder="columnsDragDropAnimation.dropPlaceholder"
-            :drag-class="columnsDragDropAnimation.dragClass"
-            :drop-class="columnsDragDropAnimation.dropClass"
           >
-            <Draggable
+            <div
               v-for="category in categories"
               :key="category.id"
-            >
-              <div class="w-[280px] flex flex-col flex-shrink-0 h-full bg-third rounded-lg py-4 px-1 relative">
-                <div id="column-drag-handle"
-                     class="text-pink-400 cursor-move absolute z-10 top-3 right-2 text-3xl font-bold">⚡
-                </div>
-
-                <div
-                  class="text-xl text-center text-highlight brightness-200 font-semibold tracking-wide border-b pb-2 border-highlight">
-                  {{ category.name }}
-                </div>
-
-                <Container
-                  group-name="col"
-                  @drop="onCardDrop(category.id, $event)"
-                  class="space-y-3 py-4 px-1 overflow-y-auto overflow-x-hidden min-h-[300px]"
-                  :drop-placeholder="cardDragDropAnimation.dropPlaceholder"
-                  :drag-class="cardDragDropAnimation.dragClass"
-                  :drop-class="cardDragDropAnimation.dropClass"
-                  :animation-duration="300"
-                  :get-child-payload="getCardPayload(category.id)"
-                >
-
-                  <div v-if="category.products.length === 0" class="h-[300px]"></div>
-
-                  <Draggable
-                    v-for="card in category.products"
-                    :key="card.id"
-                  >
-                    <div
-                      class="w-full rounded-[6px] cursor-grab overflow-hidden p-[1px] bg-highlight text-white">
-                      <div class="bg-pink-500 rounded-t-[5px] w-full p-2 text-lg font-medium">{{ card.name }}</div>
-                      <div class="px-4 py-2 text-secondary">
-                        <div class="">Brand: {{ card.brand }}</div>
-                        <div class="">Price: {{ card.price }}</div>
-                      </div>
-                    </div>
-                  </Draggable>
-                </Container>
-
+              class="w-[280px] flex flex-col flex-shrink-0 h-full bg-third rounded-lg py-4 px-1 relative">
+              <div id="column-drag-handle"
+                   class="text-pink-400 cursor-move absolute z-10 top-3 right-2 text-3xl font-bold">⚡
               </div>
-            </Draggable>
-          </Container>
+
+              <div
+                class="text-xl text-center text-highlight brightness-200 font-semibold tracking-wide border-b pb-2 border-highlight">
+                {{ category.name }}
+              </div>
+
+              <div
+                class="space-y-3 py-4 px-1 overflow-y-auto overflow-x-hidden min-h-[300px]"
+              >
+                <div
+                  v-for="card in category.products"
+                  :key="card.id"
+                  class="w-full rounded-[6px] cursor-grab overflow-hidden p-[1px] bg-highlight text-white">
+                  <div class="bg-pink-500 rounded-t-[5px] w-full p-2 text-lg font-medium">{{ card.name }}</div>
+                  <div class="px-4 py-2 text-secondary">
+                    <div class="">Brand: {{ card.brand }}</div>
+                    <div class="">Price: {{ card.price }}</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
 
         </div>
       </div>
