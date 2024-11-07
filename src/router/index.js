@@ -4,7 +4,7 @@ export const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/DragDrop/index.vue')
+    component: () => import('@/views/Dashboard/index.vue'),
   }
 ]
 

@@ -4,7 +4,7 @@
 
 <template>
   <div class="py-6 flex items-center justify-between px-4">
-    <div class="text-highlight text-3xl font-bold tracking-widest">Dashboard</div>
+    <div class="text-highlight text-3xl font-bold tracking-widest">Analytics</div>
     <div class="flex items-center gap-2">
       <div class="text-text-color font-semibold tracking-widest italic">Nhidev</div>
       <div class="size-10 rounded-full overflow-hidden">

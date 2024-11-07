@@ -1,5 +1,4 @@
 <script setup>
-import { routes } from '@/router/index.js'
 
 </script>
 
