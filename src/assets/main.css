@@ -4,11 +4,24 @@
 @tailwind utilities;
 
 * {
-    @apply box-border
+    @apply box-border;
 }
 html {
     @apply font-poppins text-[16px];
 }
 .img-cover {
     @apply w-full h-full object-cover;
+}
+/* Customize the calendar */
+.vc-custom {
+    --vc-accent-50: #ffea00;
+    --vc-accent-100: #0a52c4; /* Text current date */
+    --vc-accent-200: #abc9fa; /* T2 - CN */
+    --vc-accent-300: #ff00e8;
+    --vc-accent-400: #d367f6;
+    --vc-accent-500: #0a52c4; /* Color dark */
+    --vc-accent-600: #0a52c4; /* Color light */
+    --vc-accent-700: #fff336;
+    --vc-accent-800: #abc9fa; /* Color current dark */
+    --vc-accent-900: #0a52c4;
 }

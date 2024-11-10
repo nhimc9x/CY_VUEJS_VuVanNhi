@@ -12,7 +12,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
+    "@popperjs/core": "^2.11.8",
+    "@vueuse/core": "^11.2.0",
     "pinia": "^2.2.4",
+    "tailwind-merge": "^2.5.4",
+    "v-calendar": "^3.1.2",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
